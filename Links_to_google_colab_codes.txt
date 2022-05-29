@@ -1,0 +1,3 @@
+Customer_segment-https://colab.research.google.com/drive/1At1Uv2CFf4JljN8VxSo6lCyaMTo40Bqu?usp=sharing
+
+Car_Recommendation-https://colab.research.google.com/drive/1z7VyYa9lhtGK1iRtQJZAXo7dpzKkw5_o?usp=sharing
