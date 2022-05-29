@@ -1,0 +1,132 @@
+from ._anvil_designer import Form1Template
+from anvil import *
+import anvil.server
+import anvil.tables as tables
+import anvil.tables.query as q
+from anvil.tables import app_tables
+
+class Form1(Form1Template):
+  def __init__(self, **properties):
+    # Set Form properties and Data Bindings.
+    self.init_components(**properties)
+
+
+  def text_box_1_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    
+
+  def Manufacturer_show(self, **event_args):
+    """This method is called when the Label is shown on the screen"""
+    pass
+
+  def Manufacturer_hide(self, **event_args):
+    """This method is called when the Label is removed from the screen"""
+    pass 
+
+  def drop_down_1_change(self, **event_args):
+    """This method is called when an item is selected"""
+    r=self.drop_down_1.selected_value
+    if r:
+     self.dlist.visible=True
+     self.dlist.text="The Statistics:"+r
+    if r=="--Please select--":
+      self.ss.visible=False
+      self.ls.visible=False
+      self.ng.vivible=False
+      self.m.visible=False
+      self.g.visible=False
+      self.w.visible=False
+    elif r=="Spending Score":
+      self.ss.visible=True
+      self.ls.visible=True
+      self.ng.vivible=False
+      self.m.visible=False
+      self.g.visible=False
+      self.w.visible=False
+    elif r=="Graduates":
+      self.g.visible=True
+      self.ng.visible=True
+      self.m.visible=False
+      self.ls.visible=False
+      self.ss.visible=False
+      self.w.visible=False
+    elif r=="Gender":
+      self.w.visible=True
+      self.m.visible=True
+      self.g.visible=False
+      self.ng.visible=False
+      self.ls.visible=False
+      self.ss.visible=False
+ 
+
+  def button_1_click(self, **event_args):
+    """This method is called when the button is clicked""" 
+    resdisp=anvil.server.call('to_do_info',self.Email.text,self.Organisation.text)
+    if resdisp:
+      self.Man1.visible = True
+      self.Man1.text = "Sales throughout the year: " + resdisp.capitalize()
+      self.ana.visible=True
+      self.bmw.visible=True
+      if resdisp.capitalize()=="VM":
+       self.vm.visible=True
+       self.h.visible=False
+       self.f.visible=False
+       self.a.visible=False
+       self.s.visible=False
+       self.t.visible=False
+       self.ana.visible=False
+      elif resdisp.capitalize()=="BMW":
+       self.ana.visible=True
+       self.bmw.visible=True
+       self.h.visible=False
+       self.f.visible=False
+       self.a.visible=False
+       self.s.visible=False
+       self.t.visible=False
+       self.vm.visible=False
+      elif resdisp.capitalize()=="Hyundai":
+       self.h.visible=True
+       self.bmw.visible=False
+       self.ana.visible=False
+       self.f.visible=False
+       self.a.visible=False
+       self.s.visible=False
+       self.t.visible=False
+       self.vm.visible=False
+      elif resdisp.capitalize()=="Ford":
+       self.f.visible=True
+       self.h.visible=False
+       self.ana.visible=False
+       self.a.visible=False
+       self.s.visible=False
+       self.t.visible=False
+       self.vm.visible=False
+      elif resdisp.capitalize()=="Audi":
+       self.a.visible=True
+       self.h.visible=False
+       self.f.visible=False
+       self.ana.visible=False
+       self.s.visible=False
+       self.t.visible=False
+       self.vm.visible=False
+      elif resdisp.capitalize()=="Skoda":
+       self.s.visible=True
+       self.h.visible=False
+       self.f.visible=False
+       self.a.visible=False
+       self.ana.visible=False
+       self.t.visible=False
+       self.vm.visible=False
+      elif resdisp.capitalize()=="Toyota":
+       self.t.visible=True
+       self.h.visible=False
+       self.f.visible=False
+       self.a.visible=False
+       self.s.visible=False
+       self.ana.visible=False
+       self.vm.visible=False
+  def Man1_show(self, **event_args):
+    """This method is called when the Label is shown on the screen"""
+    pass
+
+  
